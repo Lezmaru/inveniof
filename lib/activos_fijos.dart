@@ -18,7 +18,14 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class ActivoFijoScreen extends StatelessWidget {
+class ActivoFijoScreen extends StatefulWidget {
+  @override
+  _ActivoFijoScreenState createState() => _ActivoFijoScreenState();
+}
+
+class _ActivoFijoScreenState extends State<ActivoFijoScreen> {
+  String? dropdownValue = 'Filtro';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,10 +43,36 @@ class ActivoFijoScreen extends StatelessWidget {
               child: Text('Inicio'),
               style: TextButton.styleFrom(primary: Colors.white),
             ),
-            TextButton(
-              onPressed: () {},
-              child: Text('Activos Fijos'),
-              style: TextButton.styleFrom(primary: Colors.white),
+            DropdownButton<String>(
+              value: dropdownValue,
+              icon: const Icon(Icons.arrow_downward),
+              iconSize: 24,
+              elevation: 16,
+              style: const TextStyle(color: Colors.black),
+              underline: Container(
+                height: 2,
+                color: Colors.black,
+              ),
+              onChanged: (String? newValue) {
+                setState(() {
+                  dropdownValue = newValue;
+                });
+              },
+              items: <String>[
+                'Filtro',
+                'Modelo',
+                'Serie',
+                'Tipo',
+                'Estado',
+                'Fecha de Entrega',
+                'Fecha de Salida',
+                'Asignado a'
+              ].map<DropdownMenuItem<String>>((String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value),
+                );
+              }).toList(),
             ),
             TextButton(
               onPressed: () {},
@@ -59,7 +92,6 @@ class ActivoFijoScreen extends StatelessWidget {
           SizedBox(height: 20.0),
           const Image(image: AssetImage('assets/Invenio.png'), height: 200),
           SizedBox(height: MediaQuery.of(context).size.height * 0.1),
-          SizedBox(height: 20.0),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -111,6 +143,7 @@ class ActivoFijoScreen extends StatelessWidget {
                   'Fecha de Salida',
                 ),
               ),
+              // Continúa con el resto de tu código...
               DataColumn(
                 label: Text(
                   'Asignado a',
