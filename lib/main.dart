@@ -66,7 +66,7 @@ class MyHomePage extends StatelessWidget {
           SizedBox(height: MediaQuery.of(context).size.height * 0.1),
           ElevatedButton(
             onPressed: () {},
-            child: Text('Ingresar Producto'),
+            child: Text('Ingresar Activo Fijo'),
           ),
           SizedBox(height: 20.0),
           Row(
@@ -77,7 +77,7 @@ class MyHomePage extends StatelessWidget {
                 child: TextField(
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
-                    labelText: 'Buscar Productos',
+                    labelText: 'Buscar Activos Fijos',
                   ),
                 ),
               ),

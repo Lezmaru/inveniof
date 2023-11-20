@@ -100,7 +100,7 @@ class _ActivoFijoScreenState extends State<ActivoFijoScreen> {
                 child: TextField(
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
-                    labelText: 'Buscar Productos',
+                    labelText: 'Buscar Activos Fijos',
                   ),
                 ),
               ),
@@ -143,7 +143,6 @@ class _ActivoFijoScreenState extends State<ActivoFijoScreen> {
                   'Fecha de Salida',
                 ),
               ),
-              // Continúa con el resto de tu código...
               DataColumn(
                 label: Text(
                   'Asignado a',
