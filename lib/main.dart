@@ -118,16 +118,15 @@ class MyHomePage extends StatelessWidget {
             rows: const <DataRow>[
               DataRow(
                 cells: <DataCell>[
-                  DataCell(Text('Ejemplo 1')),
-                  DataCell(Text('Ejemplo 2')),
-                  DataCell(Text('Ejemplo 3')),
-                  DataCell(Text('Ejemplo 4')),
-                  DataCell(Text('Ejemplo 5')),
-                  DataCell(Text('Ejemplo 6')),
-                  DataCell(Text('Ejemplo 7')),
+                  DataCell(Text('MJ04Q34RST')),
+                  DataCell(Text('AIO')),
+                  DataCell(Text('M810')),
+                  DataCell(Text('En uso')),
+                  DataCell(Text('10/11/2023')),
+                  DataCell(Text('12/11/2023')),
+                  DataCell(Text('Jose Luis Perales')),
                 ],
               ),
-              // Puedes añadir más filas aquí
               DataRow(
                 cells: <DataCell>[
                   DataCell(Text('Ejemplo 1')),
