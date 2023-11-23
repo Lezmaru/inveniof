@@ -25,7 +25,7 @@ class ActivoFijoScreen extends StatefulWidget {
 
 class _ActivoFijoScreenState extends State<ActivoFijoScreen> {
   String? dropdownValue = 'Filtro';
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(

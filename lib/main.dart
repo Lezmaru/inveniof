@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:invenio2/activos_fijos.dart';
+import 'package:invenio2/buscar.dart';
 
 void main() {
   runApp(MyApp());
@@ -83,7 +84,12 @@ class MyHomePage extends StatelessWidget {
               ),
               SizedBox(width: 20.0),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => BuscarScreen()),
+                );
+                },
                 child: Text('Buscar'),
               ),
             ],
