@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Invenio',
       theme: ThemeData(
-        primarySwatch: Colors.grey,
+        primarySwatch: Colors.blue,
       ),
       home: MyHomePage(),
     );
@@ -36,7 +36,7 @@ class MyHomePage extends StatelessWidget {
                 );
               },
               child: Text('Inicio'),
-              style: TextButton.styleFrom(primary: Colors.white),
+              style: TextButton.styleFrom(primary: Colors.black),
             ),
             TextButton(
               onPressed: () {
@@ -46,12 +46,12 @@ class MyHomePage extends StatelessWidget {
                 );
               },
               child: Text('Activos Fijos'),
-              style: TextButton.styleFrom(primary: Colors.white),
+              style: TextButton.styleFrom(primary: Colors.black),
             ),
             TextButton(
               onPressed: () {},
               child: Text('Gráficos'),
-              style: TextButton.styleFrom(primary: Colors.white),
+              style: TextButton.styleFrom(primary: Colors.black),
             ),
             TextButton(
               onPressed: () {
@@ -61,7 +61,7 @@ class MyHomePage extends StatelessWidget {
                 );
               },
               child: Text('Ventas'),
-              style: TextButton.styleFrom(primary: Colors.white),
+              style: TextButton.styleFrom(primary: Colors.black),
             ),
           ],
         ),
@@ -75,6 +75,7 @@ class MyHomePage extends StatelessWidget {
           ElevatedButton(
             onPressed: () {},
             child: Text('Ingresar Activo Fijo'),
+            style: TextButton.styleFrom(primary: Colors.black),
           ),
           SizedBox(height: 20.0),
           Row(
@@ -98,6 +99,7 @@ class MyHomePage extends StatelessWidget {
                   );
                 },
                 child: Text('Buscar'),
+                style: TextButton.styleFrom(primary: Colors.black),
               ),
             ],
           ),

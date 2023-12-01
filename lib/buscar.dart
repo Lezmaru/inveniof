@@ -41,7 +41,7 @@ class _BuscarScreenState extends State<BuscarScreen> {
                 );
               },
               child: Text('Inicio'),
-              style: TextButton.styleFrom(primary: Colors.white),
+              style: TextButton.styleFrom(primary: Colors.black),
             ),
             DropdownButton<String>(
               value: dropdownValue,
@@ -77,7 +77,7 @@ class _BuscarScreenState extends State<BuscarScreen> {
             TextButton(
               onPressed: () {},
               child: Text('Gráficos'),
-              style: TextButton.styleFrom(primary: Colors.white),
+              style: TextButton.styleFrom(primary: Colors.black),
             ),
             TextButton(
               onPressed: () {
@@ -87,7 +87,7 @@ class _BuscarScreenState extends State<BuscarScreen> {
                 );
               },
               child: Text('Ventas'),
-              style: TextButton.styleFrom(primary: Colors.white),
+              style: TextButton.styleFrom(primary: Colors.black),
             ),
           ],
         ),

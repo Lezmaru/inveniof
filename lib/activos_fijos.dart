@@ -42,7 +42,7 @@ class _ActivoFijoScreenState extends State<ActivoFijoScreen> {
                 );
               },
               child: Text('Inicio'),
-              style: TextButton.styleFrom(primary: Colors.white),
+              style: TextButton.styleFrom(primary: Colors.black),
             ),
             DropdownButton<String>(
               value: dropdownValue,
@@ -78,7 +78,7 @@ class _ActivoFijoScreenState extends State<ActivoFijoScreen> {
             TextButton(
               onPressed: () {},
               child: Text('Gráficos'),
-              style: TextButton.styleFrom(primary: Colors.white),
+              style: TextButton.styleFrom(primary: Colors.black),
             ),
             TextButton(
               onPressed: () {
@@ -88,7 +88,7 @@ class _ActivoFijoScreenState extends State<ActivoFijoScreen> {
                 );
               },
               child: Text('Ventas'),
-              style: TextButton.styleFrom(primary: Colors.white),
+              style: TextButton.styleFrom(primary: Colors.black),
             ),
           ],
         ),

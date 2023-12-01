@@ -42,7 +42,7 @@ class _VentasScreenState extends State<VentasScreen> {
                 );
               },
               child: Text('Inicio'),
-              style: TextButton.styleFrom(primary: Colors.white),
+              style: TextButton.styleFrom(primary: Colors.black),
             ),
             TextButton(
               onPressed: () {
@@ -52,12 +52,12 @@ class _VentasScreenState extends State<VentasScreen> {
                 );
               },
               child: Text('Activos Fijos'),
-              style: TextButton.styleFrom(primary: Colors.white),
+              style: TextButton.styleFrom(primary: Colors.black),
             ),
             TextButton(
               onPressed: () {},
               child: Text('Gráficos'),
-              style: TextButton.styleFrom(primary: Colors.white),
+              style: TextButton.styleFrom(primary: Colors.black),
             ),
             DropdownButton<String>(
               value: dropdownValue,
@@ -115,6 +115,7 @@ class _VentasScreenState extends State<VentasScreen> {
               ElevatedButton(
                 onPressed: () {},
                 child: Text('Buscar'),
+                style: TextButton.styleFrom(primary: Colors.black),
               ),
             ],
           ),
