@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:invenio2/activos_fijos.dart';
 import 'package:invenio2/main.dart';
 
 void main() {
@@ -43,6 +44,21 @@ class _VentasScreenState extends State<VentasScreen> {
               child: Text('Inicio'),
               style: TextButton.styleFrom(primary: Colors.white),
             ),
+            TextButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ActivoFijoScreen()),
+                );
+              },
+              child: Text('Activos Fijos'),
+              style: TextButton.styleFrom(primary: Colors.white),
+            ),
+            TextButton(
+              onPressed: () {},
+              child: Text('Gráficos'),
+              style: TextButton.styleFrom(primary: Colors.white),
+            ),
             DropdownButton<String>(
               value: dropdownValue,
               icon: const Icon(Icons.arrow_downward),
@@ -73,21 +89,6 @@ class _VentasScreenState extends State<VentasScreen> {
                   child: Text(value),
                 );
               }).toList(),
-            ),
-            TextButton(
-              onPressed: () {},
-              child: Text('Gráficos'),
-              style: TextButton.styleFrom(primary: Colors.white),
-            ),
-            TextButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => VentasScreen()),
-                );
-              },
-              child: Text('Ventas'),
-              style: TextButton.styleFrom(primary: Colors.white),
             ),
           ],
         ),
