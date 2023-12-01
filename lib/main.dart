@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:invenio2/activos_fijos.dart';
 import 'package:invenio2/buscar.dart';
+import 'package:invenio2/graficos.dart';
 import 'package:invenio2/ventas.dart';
 
 void main() {
@@ -49,7 +50,12 @@ class MyHomePage extends StatelessWidget {
               style: TextButton.styleFrom(primary: Colors.black),
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => GraficoScreen()),
+                );
+              },
               child: Text('Gráficos'),
               style: TextButton.styleFrom(primary: Colors.black),
             ),

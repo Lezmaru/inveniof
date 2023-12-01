@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:invenio2/activos_fijos.dart';
+import 'package:invenio2/graficos.dart';
 import 'package:invenio2/main.dart';
 
 void main() {
@@ -55,7 +56,12 @@ class _VentasScreenState extends State<VentasScreen> {
               style: TextButton.styleFrom(primary: Colors.black),
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => GraficoScreen()),
+                );
+              },
               child: Text('Gráficos'),
               style: TextButton.styleFrom(primary: Colors.black),
             ),

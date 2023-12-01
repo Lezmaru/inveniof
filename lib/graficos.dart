@@ -54,7 +54,12 @@ class _GraficoState extends State<GraficoScreen> {
               style: TextButton.styleFrom(primary: Colors.black),
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => GraficoScreen()),
+                );
+              },
               child: Text('Gráficos'),
               style: TextButton.styleFrom(primary: Colors.black),
             ),

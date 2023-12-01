@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:invenio2/graficos.dart';
 import 'package:invenio2/main.dart';
 import 'package:invenio2/ventas.dart';
 
@@ -76,7 +77,12 @@ class _ActivoFijoScreenState extends State<ActivoFijoScreen> {
               }).toList(),
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => GraficoScreen()),
+                );
+              },
               child: Text('Gráficos'),
               style: TextButton.styleFrom(primary: Colors.black),
             ),
