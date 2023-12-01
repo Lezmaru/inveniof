@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:invenio2/activos_fijos.dart';
 import 'package:invenio2/buscar.dart';
 import 'package:invenio2/graficos.dart';
+import 'package:invenio2/ingresar_datos.dart';
 import 'package:invenio2/ventas.dart';
 
 void main() {
@@ -79,7 +80,12 @@ class MyHomePage extends StatelessWidget {
               image: AssetImage('assets/images/Invenio.png'), height: 200),
           SizedBox(height: MediaQuery.of(context).size.height * 0.1),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => IngresarScreen()),
+              );
+            },
             child: Text('Ingresar Activo Fijo'),
             style: TextButton.styleFrom(primary: Colors.black),
           ),
