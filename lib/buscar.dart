@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:invenio2/activos_fijos.dart';
 import 'package:invenio2/main.dart';
 import 'package:invenio2/ventas.dart';
 
