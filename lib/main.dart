@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:invenio2/activos_fijos.dart';
-import 'package:invenio2/buscar.dart';
 import 'package:invenio2/graficos.dart';
 import 'package:invenio2/ingresar_datos.dart';
+import 'package:invenio2/login.dart';
 import 'package:invenio2/ventas.dart';
 import 'package:invenio2/services/activo_buscar_service.dart'; // Importa el servicio
 
@@ -18,15 +18,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(),
+      home: MainView(),
     );
   }
 }
 
 class MyHomePage extends StatelessWidget {
-  final TextEditingController _nombreActivoController =
-      TextEditingController(); // Controlador para el TextField
-
+  final TextEditingController _nombreActivoController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
