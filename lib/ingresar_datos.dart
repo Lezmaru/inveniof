@@ -76,6 +76,70 @@ class _GraficoState extends State<GraficoScreen> {
           ],
         ),
       ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Form(
+          child: Column(
+            children: <Widget>[
+              Text('Ingrese los Datos del Producto'),
+              TextFormField(
+                decoration: InputDecoration(labelText: 'Serie*'),
+              ),
+              DropdownButton<String>(
+                items:
+                    <String>['Laptop', 'Desktop', 'Tablet'].map((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+                onChanged: (_) {},
+                hint: Text('Tipo*'),
+              ),
+              TextFormField(
+                decoration: InputDecoration(labelText: 'Modelo*'),
+              ),
+              DropdownButton<String>(
+                items: <String>['Funcional', 'Problemas', 'Vendido']
+                    .map((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+                onChanged: (_) {},
+                hint: Text('Estado'),
+              ),
+              TextFormField(
+                decoration: InputDecoration(labelText: 'EQ*'),
+              ),
+              TextFormField(
+                decoration: InputDecoration(labelText: 'Fecha de Entrada'),
+              ),
+              TextFormField(
+                decoration: InputDecoration(labelText: 'Asignado a*'),
+              ),
+              TextFormField(
+                decoration: InputDecoration(labelText: 'RAM*'),
+              ),
+              TextFormField(
+                decoration: InputDecoration(labelText: 'SDD/HDD*'),
+              ),
+              TextFormField(
+                decoration: InputDecoration(labelText: 'Procesador*'),
+              ),
+              ElevatedButton(
+                onPressed: () {},
+                child: Text('Guardar'),
+              ),
+              ElevatedButton(
+                onPressed: () {},
+                child: Text('Cancelar'),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
