@@ -157,12 +157,7 @@ class _ActivoFijoScreenState extends State<ActivoFijoScreen> {
               ),
               DataColumn(
                 label: Text(
-                  'Tipo',
-                ),
-              ),
-              DataColumn(
-                label: Text(
-                  'Modelo',
+                  'Marca',
                 ),
               ),
               DataColumn(
@@ -170,15 +165,55 @@ class _ActivoFijoScreenState extends State<ActivoFijoScreen> {
                   'Estado',
                 ),
               ),
+              DataColumn(
+                label: Text(
+                  'EQ',
+                ),
+              ),
+              DataColumn(
+                label: Text(
+                  'Dimension Alto',
+                ),
+              ),
+              DataColumn(
+                label: Text(
+                  'Dimension Ancho',
+                ),
+              ),
+              DataColumn(
+                label: Text(
+                  'RAM',
+                ),
+              ),
+              DataColumn(
+                label: Text(
+                  'Procesador',
+                ),
+              ),
+              DataColumn(
+                label: Text(
+                  'Memoria',
+                ),
+              ),
+              DataColumn(
+                label: Text(
+                  'Color',
+                ),
+              ),
             ],
             rows: <DataRow>[
               DataRow(
                 cells: <DataCell>[
-                  DataCell(Text(activo?['serie'] ??
-                      '')), // Usa la información del activo aquí
-                  DataCell(Text(activo?['tipo'] ?? '')),
-                  DataCell(Text(activo?['modelo'] ?? '')),
+                  DataCell(Text(activo?['serie'] ?? '')),
+                  DataCell(Text(activo?['marca'] ?? '')),
                   DataCell(Text(activo?['estado'] ?? '')),
+                  DataCell(Text((activo?['eq'] ?? '').toString())),
+                  DataCell(Text((activo?['dimension_alto'] ?? '').toString())),
+                  DataCell(Text((activo?['dimension_ancho'] ?? '').toString())),
+                  DataCell(Text(activo?['ram'] ?? '')),
+                  DataCell(Text(activo?['procesador'] ?? '')),
+                  DataCell(Text(activo?['memoria'] ?? '')),
+                  DataCell(Text(activo?['color'] ?? '')),
                 ],
               ),
             ],

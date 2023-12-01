@@ -9,7 +9,12 @@ class EspecificacionesMostrarService {
 
     if (response.statusCode == 200) {
       // Si el servidor devuelve una respuesta OK, parseamos el resultado
-      return jsonDecode(response.body);
+      var responseBody = response.body;
+      if (responseBody.isEmpty) {
+        return {}; // Devuelve un objeto vacío si la respuesta está vacía
+      } else {
+        return jsonDecode(responseBody);
+      }
     } else {
       // Si la respuesta no es OK, lanzamos un error
       throw Exception('Error al obtener las especificaciones');
