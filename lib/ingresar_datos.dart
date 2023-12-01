@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:invenio2/activos_fijos.dart';
+import 'package:invenio2/graficos.dart';
 import 'package:invenio2/main.dart';
 import 'package:invenio2/ventas.dart';
 
@@ -15,17 +16,17 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.grey,
       ),
-      home: GraficoScreen(),
+      home: IngresarScreen(),
     );
   }
 }
 
-class GraficoScreen extends StatefulWidget {
+class IngresarScreen extends StatefulWidget {
   @override
-  _GraficoState createState() => _GraficoState();
+  _IngresarState createState() => _IngresarState();
 }
 
-class _GraficoState extends State<GraficoScreen> {
+class _IngresarState extends State<IngresarScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
