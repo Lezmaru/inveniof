@@ -4,6 +4,7 @@ import 'package:invenio2/buscar.dart';
 import 'package:invenio2/graficos.dart';
 import 'package:invenio2/ingresar_datos.dart';
 import 'package:invenio2/ventas.dart';
+import 'package:invenio2/services/activo_buscar_service.dart'; // Importa el servicio
 
 void main() {
   runApp(MyApp());
@@ -23,6 +24,9 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
+  final TextEditingController _nombreActivoController =
+      TextEditingController(); // Controlador para el TextField
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -96,6 +100,8 @@ class MyHomePage extends StatelessWidget {
               Container(
                 width: MediaQuery.of(context).size.width * 0.5,
                 child: TextField(
+                  controller:
+                      _nombreActivoController, // Usa el controlador aquí
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Buscar Activos Fijos',
@@ -104,11 +110,13 @@ class MyHomePage extends StatelessWidget {
               ),
               SizedBox(width: 20.0),
               ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => BuscarScreen()),
-                  );
+                onPressed: () async {
+                  var nombreActivo = _nombreActivoController
+                      .text; // Usa el valor del TextField
+                  var activoId = await ActivoBuscarService()
+                      .obtenerIdPorNombre(nombreActivo);
+                  print(
+                      'Activo ID: $activoId'); // Esto imprimirá el activo_id en la consola
                 },
                 child: Text('Buscar'),
                 style: TextButton.styleFrom(primary: Colors.black),
