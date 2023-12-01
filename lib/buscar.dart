@@ -13,14 +13,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.grey,
       ),
-      home: MyHomePage(),
+      home: BuscarScreen(),
     );
   }
 }
 
 class BuscarScreen extends StatefulWidget {
   @override
-  _BuscarScreenScreenState createState() => _BuscarScreenState();
+  _BuscarScreenState createState() => _BuscarScreenState();
 }
 
 class _BuscarScreenState extends State<BuscarScreen> {
@@ -36,7 +36,7 @@ class _BuscarScreenState extends State<BuscarScreen> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => MyHomePage()),
+                  MaterialPageRoute(builder: (context) => BuscarScreen()),
                 );
               },
               child: Text('Inicio'),
