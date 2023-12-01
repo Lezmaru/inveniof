@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:invenio2/graficos.dart';
 import 'package:invenio2/main.dart';
 import 'package:invenio2/ventas.dart';
+import 'package:invenio2/services/especificaciones_mostrar_service.dart'; // Importa el servicio
 
 void main() {
   runApp(MyApp());
@@ -27,6 +28,28 @@ class ActivoFijoScreen extends StatefulWidget {
 
 class _ActivoFijoScreenState extends State<ActivoFijoScreen> {
   String? dropdownValue = 'Filtro';
+  Map<String, dynamic>? activo; // Aquí almacenaremos la información del activo
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    cargarActivo(); // Cargamos la información del activo cuando se inicializa la pantalla
+  }
+
+  Future<void> cargarActivo() async {
+    var activoId = ModalRoute.of(context)!.settings.arguments
+        as int; // Obtiene el activo_id de la pantalla anterior
+    var activoData = await EspecificacionesMostrarService()
+        .obtenerEspecificacionesPorActivoId(activoId);
+    setState(() {
+      activo = activoData;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -147,54 +170,15 @@ class _ActivoFijoScreenState extends State<ActivoFijoScreen> {
                   'Estado',
                 ),
               ),
-              DataColumn(
-                label: Text(
-                  'Fecha de Entrega',
-                ),
-              ),
-              DataColumn(
-                label: Text(
-                  'Fecha de Salida',
-                ),
-              ),
-              DataColumn(
-                label: Text(
-                  'Asignado a',
-                ),
-              ),
             ],
-            rows: const <DataRow>[
+            rows: <DataRow>[
               DataRow(
                 cells: <DataCell>[
-                  DataCell(Text('MJ04Q34RST')),
-                  DataCell(Text('AIO')),
-                  DataCell(Text('M810')),
-                  DataCell(Text('En uso')),
-                  DataCell(Text('10/11/2023')),
-                  DataCell(Text('12/11/2023')),
-                  DataCell(Text('Jose Luis Perales')),
-                ],
-              ),
-              DataRow(
-                cells: <DataCell>[
-                  DataCell(Text('SQ461YMN12')),
-                  DataCell(Text('Televisor')),
-                  DataCell(Text('E404')),
-                  DataCell(Text('Mal Estado')),
-                  DataCell(Text('5/11/2023')),
-                  DataCell(Text(' - ')),
-                  DataCell(Text('Almacen de Soporte')),
-                ],
-              ),
-              DataRow(
-                cells: <DataCell>[
-                  DataCell(Text('ZZ34T56T7')),
-                  DataCell(Text('Verifone')),
-                  DataCell(Text('VX520')),
-                  DataCell(Text('En uso')),
-                  DataCell(Text('1/01/2023')),
-                  DataCell(Text('2/11/2023')),
-                  DataCell(Text('Agencia Villa Fátima')),
+                  DataCell(Text(activo?['serie'] ??
+                      '')), // Usa la información del activo aquí
+                  DataCell(Text(activo?['tipo'] ?? '')),
+                  DataCell(Text(activo?['modelo'] ?? '')),
+                  DataCell(Text(activo?['estado'] ?? '')),
                 ],
               ),
             ],

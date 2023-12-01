@@ -118,6 +118,15 @@ class MyHomePage extends StatelessWidget {
                       .obtenerIdPorNombre(nombreActivo);
                   print(
                       'Activo ID: $activoId'); // Esto imprimirá el activo_id en la consola
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ActivoFijoScreen(),
+                      settings: RouteSettings(
+                        arguments: activoId, // Pasa el activo_id como argumento
+                      ),
+                    ),
+                  );
                 },
                 child: Text('Buscar'),
                 style: TextButton.styleFrom(primary: Colors.black),
