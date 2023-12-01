@@ -80,7 +80,12 @@ class _VentasScreenState extends State<VentasScreen> {
               style: TextButton.styleFrom(primary: Colors.white),
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => VentasScreen()),
+                );
+              },
               child: Text('Ventas'),
               style: TextButton.styleFrom(primary: Colors.white),
             ),
@@ -90,7 +95,8 @@ class _VentasScreenState extends State<VentasScreen> {
       body: Column(
         children: <Widget>[
           SizedBox(height: 20.0),
-          const Image(image: AssetImage('assets/Invenio.png'), height: 200),
+          const Image(
+              image: AssetImage('assets/images/Invenio.png'), height: 200),
           SizedBox(height: MediaQuery.of(context).size.height * 0.1),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -100,7 +106,7 @@ class _VentasScreenState extends State<VentasScreen> {
                 child: TextField(
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
-                    labelText: 'Buscar Activos Fijos',
+                    labelText: 'Buscar Ventas de Activos Fijos',
                   ),
                 ),
               ),
@@ -152,7 +158,7 @@ class _VentasScreenState extends State<VentasScreen> {
             rows: const <DataRow>[
               DataRow(
                 cells: <DataCell>[
-                  DataCell(Text('MJ04Q34RST')),
+                  DataCell(Text('SQ461YMN12')),
                   DataCell(Text('Televisor')),
                   DataCell(Text('QN900C')),
                   DataCell(Text('Bueno')),
@@ -163,24 +169,24 @@ class _VentasScreenState extends State<VentasScreen> {
               ),
               DataRow(
                 cells: <DataCell>[
-                  DataCell(Text('SQ461YMN12')),
-                  DataCell(Text('Televisor')),
-                  DataCell(Text('E404')),
-                  DataCell(Text('Mal Estado')),
+                  DataCell(Text('MJ04Q34RST')),
+                  DataCell(Text('CPU')),
+                  DataCell(Text('M70 Gen 3')),
+                  DataCell(Text('Bueno')),
                   DataCell(Text('5/11/2023')),
-                  DataCell(Text(' - ')),
-                  DataCell(Text('Almacen de Soporte')),
+                  DataCell(Text('2/11/2023')),
+                  DataCell(Text('Ronny Rodriguez')),
                 ],
               ),
               DataRow(
                 cells: <DataCell>[
-                  DataCell(Text('ZZ34T56T7')),
-                  DataCell(Text('Verifone')),
-                  DataCell(Text('VX520')),
-                  DataCell(Text('En uso')),
-                  DataCell(Text('1/01/2023')),
-                  DataCell(Text('2/11/2023')),
-                  DataCell(Text('Agencia Villa Fátima')),
+                  DataCell(Text('SAF41Q4RDAX')),
+                  DataCell(Text('Tablet')),
+                  DataCell(Text('M10')),
+                  DataCell(Text('Bueno')),
+                  DataCell(Text('2/10/2023')),
+                  DataCell(Text('1/10/2023')),
+                  DataCell(Text('Luisa Portillo')),
                 ],
               ),
             ],

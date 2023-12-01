@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:invenio2/activos_fijos.dart';
 import 'package:invenio2/buscar.dart';
+import 'package:invenio2/ventas.dart';
 
 void main() {
   runApp(MyApp());
@@ -53,7 +54,12 @@ class MyHomePage extends StatelessWidget {
               style: TextButton.styleFrom(primary: Colors.white),
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => VentasScreen()),
+                );
+              },
               child: Text('Ventas'),
               style: TextButton.styleFrom(primary: Colors.white),
             ),
@@ -63,7 +69,8 @@ class MyHomePage extends StatelessWidget {
       body: Column(
         children: <Widget>[
           SizedBox(height: 20.0),
-          const Image(image: AssetImage('assets/Invenio.png'), height: 200),
+          const Image(
+              image: AssetImage('assets/images/Invenio.png'), height: 200),
           SizedBox(height: MediaQuery.of(context).size.height * 0.1),
           ElevatedButton(
             onPressed: () {},
@@ -86,9 +93,9 @@ class MyHomePage extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {
                   Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => BuscarScreen()),
-                );
+                    context,
+                    MaterialPageRoute(builder: (context) => BuscarScreen()),
+                  );
                 },
                 child: Text('Buscar'),
               ),
