@@ -27,10 +27,13 @@ class IngresarScreen extends StatefulWidget {
 }
 
 class _IngresarState extends State<IngresarScreen> {
+  String? _selectedTipo;
+  String? _selectedEstado;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.grey,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
@@ -87,6 +90,7 @@ class _IngresarState extends State<IngresarScreen> {
                 decoration: InputDecoration(labelText: 'Serie*'),
               ),
               DropdownButton<String>(
+                value: _selectedTipo,
                 items:
                     <String>['Laptop', 'Desktop', 'Tablet'].map((String value) {
                   return DropdownMenuItem<String>(
@@ -94,13 +98,18 @@ class _IngresarState extends State<IngresarScreen> {
                     child: Text(value),
                   );
                 }).toList(),
-                onChanged: (_) {},
+                onChanged: (newValue) {
+                  setState(() {
+                    _selectedTipo = newValue;
+                  });
+                },
                 hint: Text('Tipo*'),
               ),
               TextFormField(
                 decoration: InputDecoration(labelText: 'Modelo*'),
               ),
               DropdownButton<String>(
+                value: _selectedEstado,
                 items: <String>['Funcional', 'Problemas', 'Vendido']
                     .map((String value) {
                   return DropdownMenuItem<String>(
@@ -108,7 +117,11 @@ class _IngresarState extends State<IngresarScreen> {
                     child: Text(value),
                   );
                 }).toList(),
-                onChanged: (_) {},
+                onChanged: (newValue) {
+                  setState(() {
+                    _selectedEstado = newValue;
+                  });
+                },
                 hint: Text('Estado'),
               ),
               TextFormField(
@@ -129,10 +142,12 @@ class _IngresarState extends State<IngresarScreen> {
               TextFormField(
                 decoration: InputDecoration(labelText: 'Procesador*'),
               ),
+              SizedBox(height: 20.0),
               ElevatedButton(
                 onPressed: () {},
                 child: Text('Guardar'),
               ),
+              SizedBox(height: 20.0),
               ElevatedButton(
                 onPressed: () {},
                 child: Text('Cancelar'),

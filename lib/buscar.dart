@@ -31,6 +31,7 @@ class _BuscarScreenState extends State<BuscarScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.grey,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [

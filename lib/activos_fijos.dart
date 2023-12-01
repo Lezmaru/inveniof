@@ -32,6 +32,7 @@ class _ActivoFijoScreenState extends State<ActivoFijoScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.grey,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
