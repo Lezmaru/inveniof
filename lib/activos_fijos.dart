@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:invenio2/graficos.dart';
 import 'package:invenio2/main.dart';
+import 'package:invenio2/services/especificaciones_service.dart';
 import 'package:invenio2/ventas.dart';
 import 'package:invenio2/services/especificaciones_mostrar_service.dart';
 
@@ -202,6 +203,16 @@ class _ActivoFijoScreenState extends State<ActivoFijoScreen> {
                   'Color',
                 ),
               ),
+              DataColumn(
+                label: Text(
+                  'Editar',
+                ),
+              ),
+               DataColumn(
+                label: Text(
+                  'Eliminar',
+                ),
+              ),
             ],
             rows: especificaciones!
                   .map(
@@ -217,6 +228,30 @@ class _ActivoFijoScreenState extends State<ActivoFijoScreen> {
                         DataCell(Text(especificacion.procesador)),
                         DataCell(Text(especificacion.memoria)),
                         DataCell(Text(especificacion.color)),
+                        DataCell(ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MyHomePage()),
+                            );
+                          },
+                          child: Text('Editar'),
+                          style: TextButton.styleFrom(primary: Color.fromARGB(255, 56, 17, 250)),
+                        )),
+                        DataCell(ElevatedButton(
+                          onPressed: () {
+                            var res = EspecificacionesMostrarService()
+                                .eliminarEspecificaciones(especificacion.id);
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MyHomePage()),
+                            );
+                          },
+                          child: Text('Eliminar'),
+                          style: TextButton.styleFrom(primary: Colors.black),
+                        )),
                       ],
                     ),
                   )

@@ -25,4 +25,16 @@ class EspecificacionesMostrarService {
       throw Exception('Error al obtener las especificaciones');
     }
   }
+
+  //Delete
+  Future<String> eliminarEspecificaciones(int especificacionesId) async {
+    final response = await http.delete(Uri.parse(
+        'http://localhost:8080/api/v1/especificaciones/eliminar/$especificacionesId'));
+
+    if (response.statusCode == 200) {
+      return "Exito";
+    } else {
+      throw Exception('Error al eliminar las especificaciones');
+    }
+  }
 }
