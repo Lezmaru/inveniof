@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:invenio2/activos_fijos.dart';
 import 'package:invenio2/graficos.dart';
 import 'package:invenio2/main.dart';
+import 'package:invenio2/services/especificaciones_service.dart';
 import 'package:invenio2/ventas.dart';
 
 void main() {
@@ -29,6 +30,14 @@ class IngresarScreen extends StatefulWidget {
 class _IngresarState extends State<IngresarScreen> {
   String? _selectedTipo;
   String? _selectedEstado;
+  TextEditingController _serieController = TextEditingController();
+  TextEditingController _modeloController = TextEditingController();
+  TextEditingController _eqController = TextEditingController();
+  TextEditingController _asignadoController = TextEditingController();
+  TextEditingController _ramController = TextEditingController();
+  TextEditingController _sddController = TextEditingController();
+  TextEditingController _procesadorController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,8 +95,9 @@ class _IngresarState extends State<IngresarScreen> {
           child: Column(
             children: <Widget>[
               Text('Ingrese los Datos del Producto'),
-              TextFormField(
-                decoration: InputDecoration(labelText: 'Serie*'),
+              TextField(
+                controller: _serieController,
+                decoration: InputDecoration(labelText: 'Serie equipo*'),
               ),
               DropdownButton<String>(
                 value: _selectedTipo,
@@ -105,7 +115,8 @@ class _IngresarState extends State<IngresarScreen> {
                 },
                 hint: Text('Tipo*'),
               ),
-              TextFormField(
+              TextField(
+                controller: _modeloController,
                 decoration: InputDecoration(labelText: 'Modelo*'),
               ),
               DropdownButton<String>(
@@ -124,32 +135,62 @@ class _IngresarState extends State<IngresarScreen> {
                 },
                 hint: Text('Estado'),
               ),
-              TextFormField(
+              TextField(
+                controller: _eqController,
                 decoration: InputDecoration(labelText: 'EQ*'),
               ),
-              TextFormField(
+              TextField(
                 decoration: InputDecoration(labelText: 'Fecha de Entrada'),
               ),
-              TextFormField(
+              TextField(
+                controller: _asignadoController,
                 decoration: InputDecoration(labelText: 'Asignado a*'),
               ),
-              TextFormField(
+              TextField(
+                controller: _ramController,
                 decoration: InputDecoration(labelText: 'RAM*'),
               ),
-              TextFormField(
+              TextField(
+                controller: _sddController,
                 decoration: InputDecoration(labelText: 'SDD/HDD*'),
               ),
-              TextFormField(
-                decoration: InputDecoration(labelText: 'Procesador*'),
+              TextField(
+                controller: _procesadorController,
+                decoration: InputDecoration(labelText: 'Procesador: *'),
               ),
               SizedBox(height: 20.0),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  print("HIKA");
+                  print(_serieController.text);
+                  print(_selectedTipo);
+                  print(_modeloController.text);
+                  print(_selectedEstado);
+                  print(_eqController.text);
+                  print(_asignadoController.text);
+                  print(_ramController.text);
+                  print(_sddController.text);
+                  print(_procesadorController.text);
+                   var res =EspecificacionesService().guardarEspecificaciones(
+                      _serieController.text,
+                      _modeloController.text,
+                      _selectedEstado.toString(),
+                      int.parse(_eqController.text),
+                      10,
+                      10,
+                      _ramController.text,
+                      _procesadorController.text,
+                      _sddController.text,
+                      "balnco"
+                      );
+                },
                 child: Text('Guardar'),
               ),
               SizedBox(height: 20.0),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  print("CANCELAR");
+                },
                 child: Text('Cancelar'),
               ),
             ],
