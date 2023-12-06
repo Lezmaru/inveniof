@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:invenio2/graficos.dart';
 import 'package:invenio2/main.dart';
 import 'package:invenio2/ventas.dart';
-import 'package:invenio2/services/especificaciones_mostrar_service.dart'; // Importa el servicio
+import 'package:invenio2/services/especificaciones_mostrar_service.dart';
+
+import 'dto/lista_especificaciones_dto.dart'; // Importa el servicio
 
 void main() {
   runApp(MyApp());
@@ -28,7 +30,7 @@ class ActivoFijoScreen extends StatefulWidget {
 
 class _ActivoFijoScreenState extends State<ActivoFijoScreen> {
   String? dropdownValue = 'Filtro';
-  Map<String, dynamic>? activo; // Aquí almacenaremos la información del activo
+  List<ListaEspecificacionesdto>? especificaciones; // Aquí almacenaremos la información del activo
 
   @override
   void initState() {
@@ -47,7 +49,7 @@ class _ActivoFijoScreenState extends State<ActivoFijoScreen> {
     var activoData = await EspecificacionesMostrarService()
         .obtenerEspecificacionesPorActivoId(activoId);
     setState(() {
-      activo = activoData;
+      especificaciones = activoData;
     });
   }
 
@@ -201,22 +203,24 @@ class _ActivoFijoScreenState extends State<ActivoFijoScreen> {
                 ),
               ),
             ],
-            rows: <DataRow>[
-              DataRow(
-                cells: <DataCell>[
-                  DataCell(Text(activo?['serie'] ?? '')),
-                  DataCell(Text(activo?['marca'] ?? '')),
-                  DataCell(Text(activo?['estado'] ?? '')),
-                  DataCell(Text((activo?['eq'] ?? '').toString())),
-                  DataCell(Text((activo?['dimension_alto'] ?? '').toString())),
-                  DataCell(Text((activo?['dimension_ancho'] ?? '').toString())),
-                  DataCell(Text(activo?['ram'] ?? '')),
-                  DataCell(Text(activo?['procesador'] ?? '')),
-                  DataCell(Text(activo?['memoria'] ?? '')),
-                  DataCell(Text(activo?['color'] ?? '')),
-                ],
-              ),
-            ],
+            rows: especificaciones!
+                  .map(
+                    (especificacion) => DataRow(
+                      cells: <DataCell>[
+                        DataCell(Text(especificacion.serie)),
+                        DataCell(Text(especificacion.marca)),
+                        DataCell(Text(especificacion.estado)),
+                        DataCell(Text(especificacion.eq.toString())),
+                        DataCell(Text(especificacion.dimensionAlto.toString())),
+                        DataCell(Text(especificacion.dimensionAncho.toString())),
+                        DataCell(Text(especificacion.ram)),
+                        DataCell(Text(especificacion.procesador)),
+                        DataCell(Text(especificacion.memoria)),
+                        DataCell(Text(especificacion.color)),
+                      ],
+                    ),
+                  )
+                  .toList(),
           ),
         ],
       ),
