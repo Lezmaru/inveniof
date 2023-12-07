@@ -1,35 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:invenio2/activos_fijos.dart';
+import 'package:invenio2/dto/lista_especificaciones_dto.dart';
 import 'package:invenio2/graficos.dart';
 import 'package:invenio2/main.dart';
 import 'package:invenio2/services/especificaciones_service.dart';
 import 'package:invenio2/ventas.dart';
 
-void main() {
-  runApp(MyApp());
-}
+class ModificarScreen extends StatefulWidget {
+  final ListaEspecificacionesdto especificacion;
 
-class MyApp extends StatelessWidget {
+  ModificarScreen({required this.especificacion});
+
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Invenio',
-      theme: ThemeData(
-        primarySwatch: Colors.grey,
-      ),
-      home: IngresarScreen(),
-    );
-  }
+  _ModificarState createState() => _ModificarState();
 }
 
-class IngresarScreen extends StatefulWidget {
-  @override
-  _IngresarState createState() => _IngresarState();
-}
-
-class _IngresarState extends State<IngresarScreen> {
+class _ModificarState extends State<ModificarScreen> {
   String? _selectedTipo;
   String? _selectedEstado;
+
   TextEditingController _altController = TextEditingController();
   TextEditingController _anchoController = TextEditingController();
 
@@ -43,6 +32,16 @@ class _IngresarState extends State<IngresarScreen> {
 
   @override
   Widget build(BuildContext context) {
+    _altController.text = widget.especificacion.dimensionAlto.toString();
+    _anchoController.text = widget.especificacion.dimensionAncho.toString();
+    _serieController.text = widget.especificacion.serie;
+    _modeloController.text = widget.especificacion.marca;
+    _eqController.text = widget.especificacion.eq.toString();
+    _asignadoController.text = widget.especificacion.color;
+    _ramController.text = widget.especificacion.ram;
+    _sddController.text = widget.especificacion.memoria;
+    _procesadorController.text = widget.especificacion.procesador;
+    _selectedEstado = widget.especificacion.estado;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.grey,
@@ -170,27 +169,7 @@ class _IngresarState extends State<IngresarScreen> {
               ElevatedButton(
                 onPressed: () {
                   print("HIKA");
-                  print(_serieController.text);
-                  print(_selectedTipo);
-                  print(_modeloController.text);
-                  print(_selectedEstado);
-                  print(_eqController.text);
-                  print(_asignadoController.text);
-                  print(_ramController.text);
-                  print(_sddController.text);
-                  print(_procesadorController.text);
-                   var res =EspecificacionesService().guardarEspecificaciones(
-                      _serieController.text,
-                      _modeloController.text,
-                      _selectedEstado.toString(),
-                      int.parse(_eqController.text),
-                      int.parse(_altController.text),
-                      int.parse(_anchoController.text),
-                      _ramController.text,
-                      _procesadorController.text,
-                      _sddController.text,
-                      _asignadoController.text
-                      );
+                  print(widget.especificacion);
                 },
                 child: Text('Guardar'),
               ),

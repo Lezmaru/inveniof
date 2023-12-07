@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:invenio2/graficos.dart';
 import 'package:invenio2/main.dart';
+import 'package:invenio2/modificar_activo.dart';
 import 'package:invenio2/services/especificaciones_service.dart';
 import 'package:invenio2/ventas.dart';
 import 'package:invenio2/services/especificaciones_mostrar_service.dart';
@@ -95,7 +96,7 @@ class _ActivoFijoScreenState extends State<ActivoFijoScreen> {
                 'Estado',
                 'Fecha de Entrega',
                 'Fecha de Salida',
-                'Asignado a'
+                'Color'
               ].map<DropdownMenuItem<String>>((String value) {
                 return DropdownMenuItem<String>(
                   value: value,
@@ -230,11 +231,12 @@ class _ActivoFijoScreenState extends State<ActivoFijoScreen> {
                         DataCell(Text(especificacion.color)),
                         DataCell(ElevatedButton(
                           onPressed: () {
-                            Navigator.push(
+                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => MyHomePage()),
+                                  builder: (context) => ModificarScreen(especificacion: especificacion)),
                             );
+                            
                           },
                           child: Text('Editar'),
                           style: TextButton.styleFrom(primary: Color.fromARGB(255, 56, 17, 250)),
@@ -243,7 +245,7 @@ class _ActivoFijoScreenState extends State<ActivoFijoScreen> {
                           onPressed: () {
                             var res = EspecificacionesMostrarService()
                                 .eliminarEspecificaciones(especificacion.id);
-                            Navigator.push(
+                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (context) => MyHomePage()),

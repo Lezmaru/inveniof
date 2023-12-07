@@ -38,4 +38,23 @@ class ListaEspecificacionesdto {
         memoria: json['memoria'],
         color: json['color']);
   }
+
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'serie': serie,
+        'marca': marca,
+        'estado': estado,
+        'eq': eq,
+        'dimension_alto': dimensionAlto,
+        'dimension_ancho': dimensionAncho,
+        'ram': ram,
+        'procesador': procesador,
+        'memoria': memoria,
+        'color': color
+      };
+
+  @override
+  String toString() {
+    return 'ListaEspecificacionesdto{id: $id, serie: $serie, marca: $marca, estado: $estado, eq: $eq, dimensionAlto: $dimensionAlto, dimensionAncho: $dimensionAncho, ram: $ram, procesador: $procesador, memoria: $memoria, color: $color}';
+  }
 }
