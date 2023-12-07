@@ -127,7 +127,8 @@ class _ActivoFijoScreenState extends State<ActivoFijoScreen> {
           ],
         ),
       ),
-      body: Column(
+      body: SingleChildScrollView(
+       child: Column(
         children: <Widget>[
           SizedBox(height: 20.0),
           const Image(
@@ -176,12 +177,12 @@ class _ActivoFijoScreenState extends State<ActivoFijoScreen> {
               ),
               DataColumn(
                 label: Text(
-                  'Dimension Alto',
+                  'Alto',
                 ),
               ),
               DataColumn(
                 label: Text(
-                  'Dimension Ancho',
+                  'Ancho',
                 ),
               ),
               DataColumn(
@@ -260,6 +261,7 @@ class _ActivoFijoScreenState extends State<ActivoFijoScreen> {
                   .toList(),
           ),
         ],
+      )
       ),
     );
   }

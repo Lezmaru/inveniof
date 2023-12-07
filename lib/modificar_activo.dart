@@ -3,6 +3,7 @@ import 'package:invenio2/activos_fijos.dart';
 import 'package:invenio2/dto/lista_especificaciones_dto.dart';
 import 'package:invenio2/graficos.dart';
 import 'package:invenio2/main.dart';
+import 'package:invenio2/services/especificaciones_mostrar_service.dart';
 import 'package:invenio2/services/especificaciones_service.dart';
 import 'package:invenio2/ventas.dart';
 
@@ -170,13 +171,32 @@ class _ModificarState extends State<ModificarScreen> {
                 onPressed: () {
                   print("HIKA");
                   print(widget.especificacion);
+                  var res = EspecificacionesMostrarService().actualizarEspecificaciones(
+                      widget.especificacion.id,
+                      _serieController.text,
+                      _modeloController.text,
+                      _selectedEstado.toString(),
+                      int.parse(_eqController.text),
+                      int.parse(_altController.text),
+                      int.parse(_anchoController.text),
+                      _ramController.text,
+                      _procesadorController.text,
+                      _sddController.text,
+                      _asignadoController.text,
+                      );
+                       Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MyHomePage()),
+                            );
+                  
                 },
-                child: Text('Guardar'),
+                child: Text('Modificar'),
               ),
               SizedBox(height: 20.0),
               ElevatedButton(
                 onPressed: () {
-                  print("CANCELAR");
+                  Navigator.pop(context);
                 },
                 child: Text('Cancelar'),
               ),
