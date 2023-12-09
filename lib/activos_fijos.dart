@@ -216,7 +216,10 @@ class _ActivoFijoScreenState extends State<ActivoFijoScreen> {
                 ),
               ),
             ],
-            rows: especificaciones!
+            rows: especificaciones == null
+                ? <DataRow>[] // Si no hay información, muestra una lista vacía
+                : // Si hay información, muestra la lista de 
+            especificaciones!
                   .map(
                     (especificacion) => DataRow(
                       cells: <DataCell>[
