@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-
+import 'package:invenio2/utils/environment.dart';
 
 
 import '../dto/lista_especificaciones_dto.dart';
@@ -8,7 +8,7 @@ class EspecificacionesMostrarService {
   Future<List<ListaEspecificacionesdto>> obtenerEspecificacionesPorActivoId(
       int activoId) async {
     final response = await http.get(Uri.parse(
-        'http://localhost:8080/api/v1/especificaciones/obtenerPorActivoId/$activoId'));
+        '${Environment.API_URL}/api/v1/especificaciones/obtenerPorActivoId/$activoId'));
 
     if (response.statusCode == 200) {
       var responseBody = response.body;
@@ -29,7 +29,7 @@ class EspecificacionesMostrarService {
   //Delete
   Future<String> eliminarEspecificaciones(int especificacionesId) async {
     final response = await http.delete(Uri.parse(
-        'http://localhost:8080/api/v1/especificaciones/eliminar/$especificacionesId'));
+        '${Environment.API_URL}/api/v1/especificaciones/eliminar/$especificacionesId'));
 
     if (response.statusCode == 200) {
       return "Exito";
@@ -52,7 +52,7 @@ class EspecificacionesMostrarService {
       String memoria,
       String color) async {
     final response = await http.put(Uri.parse(
-        'http://localhost:8080/api/v1/especificaciones/actualizar/$especificacionesId?serie=$serie&marca=$marca&estado=$estado&eq=$eq&dimension_alto=$alto&dimension_ancho=$ancho&ram=$ram&procesador=$procesador&memoria=$memoria&color=$color&Activo_activoo_id=2'));
+        '${Environment.API_URL}/api/v1/especificaciones/actualizar/$especificacionesId?serie=$serie&marca=$marca&estado=$estado&eq=$eq&dimension_alto=$alto&dimension_ancho=$ancho&ram=$ram&procesador=$procesador&memoria=$memoria&color=$color&Activo_activoo_id=2'));
 
     if (response.statusCode == 200) {
       return "Exito";

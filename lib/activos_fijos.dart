@@ -73,36 +73,15 @@ class _ActivoFijoScreenState extends State<ActivoFijoScreen> {
               child: Text('Inicio'),
               style: TextButton.styleFrom(primary: Colors.black),
             ),
-            DropdownButton<String>(
-              value: dropdownValue,
-              icon: const Icon(Icons.arrow_downward),
-              iconSize: 24,
-              elevation: 16,
-              style: const TextStyle(color: Colors.black),
-              underline: Container(
-                height: 2,
-                color: Colors.black,
-              ),
-              onChanged: (String? newValue) {
-                setState(() {
-                  dropdownValue = newValue;
-                });
-              },
-              items: <String>[
-                'Filtro',
-                'Modelo',
-                'Serie',
-                'Tipo',
-                'Estado',
-                'Fecha de Entrega',
-                'Fecha de Salida',
-                'Color'
-              ].map<DropdownMenuItem<String>>((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
+            TextButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MyHomePage()),
                 );
-              }).toList(),
+              },
+              child: Text('Activos'),
+              style: TextButton.styleFrom(primary: Colors.black),
             ),
             TextButton(
               onPressed: () {
@@ -153,116 +132,120 @@ class _ActivoFijoScreenState extends State<ActivoFijoScreen> {
               ),
             ],
           ),
-          DataTable(
-            columns: const <DataColumn>[
-              DataColumn(
-                label: Text(
-                  'Serie',
-                ),
-              ),
-              DataColumn(
-                label: Text(
-                  'Marca',
-                ),
-              ),
-              DataColumn(
-                label: Text(
-                  'Estado',
-                ),
-              ),
-              DataColumn(
-                label: Text(
-                  'EQ',
-                ),
-              ),
-              DataColumn(
-                label: Text(
-                  'Alto',
-                ),
-              ),
-              DataColumn(
-                label: Text(
-                  'Ancho',
-                ),
-              ),
-              DataColumn(
-                label: Text(
-                  'RAM',
-                ),
-              ),
-              DataColumn(
-                label: Text(
-                  'Procesador',
-                ),
-              ),
-              DataColumn(
-                label: Text(
-                  'Memoria',
-                ),
-              ),
-              DataColumn(
-                label: Text(
-                  'Color',
-                ),
-              ),
-              DataColumn(
-                label: Text(
-                  'Editar',
-                ),
-              ),
-               DataColumn(
-                label: Text(
-                  'Eliminar',
-                ),
-              ),
-            ],
-            rows: especificaciones == null
-                ? <DataRow>[] // Si no hay información, muestra una lista vacía
-                : // Si hay información, muestra la lista de 
-            especificaciones!
-                  .map(
-                    (especificacion) => DataRow(
-                      cells: <DataCell>[
-                        DataCell(Text(especificacion.serie)),
-                        DataCell(Text(especificacion.marca)),
-                        DataCell(Text(especificacion.estado)),
-                        DataCell(Text(especificacion.eq.toString())),
-                        DataCell(Text(especificacion.dimensionAlto.toString())),
-                        DataCell(Text(especificacion.dimensionAncho.toString())),
-                        DataCell(Text(especificacion.ram)),
-                        DataCell(Text(especificacion.procesador)),
-                        DataCell(Text(especificacion.memoria)),
-                        DataCell(Text(especificacion.color)),
-                        DataCell(ElevatedButton(
-                          onPressed: () {
-                             Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => ModificarScreen(especificacion: especificacion)),
-                            );
-                            
-                          },
-                          child: Text('Editar'),
-                          style: TextButton.styleFrom(primary: Color.fromARGB(255, 56, 17, 250)),
-                        )),
-                        DataCell(ElevatedButton(
-                          onPressed: () {
-                            var res = EspecificacionesMostrarService()
-                                .eliminarEspecificaciones(especificacion.id);
-                           Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => MyHomePage()),
-                            );
-                          },
-                          child: Text('Eliminar'),
-                          style: TextButton.styleFrom(primary: Colors.black),
-                        )),
-                      ],
+          // Wrap the DataTable in SingleChildScrollView and set scrollDirection to Axis.horizontal
+SingleChildScrollView(
+  scrollDirection: Axis.horizontal,
+  child: DataTable(
+    columns: const <DataColumn>[
+      DataColumn(
+        label: Text(
+          'Serie',
+        ),
+      ),
+      DataColumn(
+        label: Text(
+          'Marca',
+        ),
+      ),
+      DataColumn(
+        label: Text(
+          'Estado',
+        ),
+      ),
+      DataColumn(
+        label: Text(
+          'EQ',
+        ),
+      ),
+      DataColumn(
+        label: Text(
+          'Alto',
+        ),
+      ),
+      DataColumn(
+        label: Text(
+          'Ancho',
+        ),
+      ),
+      DataColumn(
+        label: Text(
+          'RAM',
+        ),
+      ),
+      DataColumn(
+        label: Text(
+          'Procesador',
+        ),
+      ),
+      DataColumn(
+        label: Text(
+          'Memoria',
+        ),
+      ),
+      DataColumn(
+        label: Text(
+          'Color',
+        ),
+      ),
+      DataColumn(
+        label: Text(
+          'Editar',
+        ),
+      ),
+      DataColumn(
+        label: Text(
+          'Eliminar',
+        ),
+      ),
+    ],
+    rows: especificaciones == null
+        ? <DataRow>[] // Si no hay información, muestra una lista vacía
+        : // Si hay información, muestra la lista de 
+    especificaciones!
+        .map(
+          (especificacion) => DataRow(
+            cells: <DataCell>[
+              DataCell(Text(especificacion.serie)),
+              DataCell(Text(especificacion.marca)),
+              DataCell(Text(especificacion.estado)),
+              DataCell(Text(especificacion.eq.toString())),
+              DataCell(Text(especificacion.dimensionAlto.toString())),
+              DataCell(Text(especificacion.dimensionAncho.toString())),
+              DataCell(Text(especificacion.ram)),
+              DataCell(Text(especificacion.procesador)),
+              DataCell(Text(especificacion.memoria)),
+              DataCell(Text(especificacion.color)),
+              DataCell(ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ModificarScreen(especificacion: especificacion),
                     ),
-                  )
-                  .toList(),
+                  );
+                },
+                child: Text('Editar'),
+                style: TextButton.styleFrom(primary: Color.fromARGB(255, 56, 17, 250)),
+              )),
+              DataCell(ElevatedButton(
+                onPressed: () {
+                  var res = EspecificacionesMostrarService().eliminarEspecificaciones(especificacion.id);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => MyHomePage(),
+                    ),
+                  );
+                },
+                child: Text('Eliminar'),
+                style: TextButton.styleFrom(primary: Colors.black),
+              )),
+            ],
           ),
+        )
+        .toList(),
+  ),
+),
         ],
       )
       ),
