@@ -1,3 +1,4 @@
+import 'package:auth0_flutter/auth0_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:invenio2/graficos.dart';
 import 'package:invenio2/main.dart';
@@ -26,11 +27,13 @@ class MyApp extends StatelessWidget {
 }
 
 class ActivoFijoScreen extends StatefulWidget {
+
   @override
   _ActivoFijoScreenState createState() => _ActivoFijoScreenState();
 }
 
 class _ActivoFijoScreenState extends State<ActivoFijoScreen> {
+  
   String? dropdownValue = 'Filtro';
   List<ListaEspecificacionesdto>? especificaciones; // Aquí almacenaremos la información del activo
 
@@ -73,16 +76,7 @@ class _ActivoFijoScreenState extends State<ActivoFijoScreen> {
               child: Text('Inicio'),
               style: TextButton.styleFrom(primary: Colors.black),
             ),
-            TextButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => MyHomePage()),
-                );
-              },
-              child: Text('Activos'),
-              style: TextButton.styleFrom(primary: Colors.black),
-            ),
+           
             TextButton(
               onPressed: () {
                 Navigator.push(
