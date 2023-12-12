@@ -20,7 +20,6 @@ class _MainViewState extends State<MainView> {
   void initState() {
     super.initState();
     auth0 = Auth0('dev-et7ad23cy60xt03a.us.auth0.com', '4hIn3NfQdPcMckaPeqD7iY49QLNOeIKm');
-   
   }
 
   @override

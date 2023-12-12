@@ -27,15 +27,14 @@ class MyApp extends StatelessWidget {
 }
 
 class ActivoFijoScreen extends StatefulWidget {
-
   @override
   _ActivoFijoScreenState createState() => _ActivoFijoScreenState();
 }
 
 class _ActivoFijoScreenState extends State<ActivoFijoScreen> {
-  
   String? dropdownValue = 'Filtro';
-  List<ListaEspecificacionesdto>? especificaciones; // Aquí almacenaremos la información del activo
+  List<ListaEspecificacionesdto>?
+      especificaciones; // Aquí almacenaremos la información del activo
 
   @override
   void initState() {
@@ -49,8 +48,15 @@ class _ActivoFijoScreenState extends State<ActivoFijoScreen> {
   }
 
   Future<void> cargarActivo() async {
-    var activoId = ModalRoute.of(context)!.settings.arguments
-        as int; // Obtiene el activo_id de la pantalla anterior
+    int activoId;
+    print(ModalRoute.of(context)!.settings.arguments);
+    if (ModalRoute.of(context)!.settings.arguments == null) {
+      print("Activo id es null");
+      activoId = 2; // Si no se obtiene el activo_id, se asigna 1 por defecto
+    } else {
+      print("Activo id no es null");
+      activoId = ModalRoute.of(context)!.settings.arguments as int;
+    }
     var activoData = await EspecificacionesMostrarService()
         .obtenerEspecificacionesPorActivoId(activoId);
     setState(() {
@@ -76,7 +82,6 @@ class _ActivoFijoScreenState extends State<ActivoFijoScreen> {
               child: Text('Inicio'),
               style: TextButton.styleFrom(primary: Colors.black),
             ),
-           
             TextButton(
               onPressed: () {
                 Navigator.push(
@@ -101,7 +106,7 @@ class _ActivoFijoScreenState extends State<ActivoFijoScreen> {
         ),
       ),
       body: SingleChildScrollView(
-       child: Column(
+          child: Column(
         children: <Widget>[
           SizedBox(height: 20.0),
           const Image(
@@ -127,122 +132,128 @@ class _ActivoFijoScreenState extends State<ActivoFijoScreen> {
             ],
           ),
           // Wrap the DataTable in SingleChildScrollView and set scrollDirection to Axis.horizontal
-SingleChildScrollView(
-  scrollDirection: Axis.horizontal,
-  child: DataTable(
-    columns: const <DataColumn>[
-      DataColumn(
-        label: Text(
-          'Serie',
-        ),
-      ),
-      DataColumn(
-        label: Text(
-          'Marca',
-        ),
-      ),
-      DataColumn(
-        label: Text(
-          'Estado',
-        ),
-      ),
-      DataColumn(
-        label: Text(
-          'EQ',
-        ),
-      ),
-      DataColumn(
-        label: Text(
-          'Alto',
-        ),
-      ),
-      DataColumn(
-        label: Text(
-          'Ancho',
-        ),
-      ),
-      DataColumn(
-        label: Text(
-          'RAM',
-        ),
-      ),
-      DataColumn(
-        label: Text(
-          'Procesador',
-        ),
-      ),
-      DataColumn(
-        label: Text(
-          'Memoria',
-        ),
-      ),
-      DataColumn(
-        label: Text(
-          'Color',
-        ),
-      ),
-      DataColumn(
-        label: Text(
-          'Editar',
-        ),
-      ),
-      DataColumn(
-        label: Text(
-          'Eliminar',
-        ),
-      ),
-    ],
-    rows: especificaciones == null
-        ? <DataRow>[] // Si no hay información, muestra una lista vacía
-        : // Si hay información, muestra la lista de 
-    especificaciones!
-        .map(
-          (especificacion) => DataRow(
-            cells: <DataCell>[
-              DataCell(Text(especificacion.serie)),
-              DataCell(Text(especificacion.marca)),
-              DataCell(Text(especificacion.estado)),
-              DataCell(Text(especificacion.eq.toString())),
-              DataCell(Text(especificacion.dimensionAlto.toString())),
-              DataCell(Text(especificacion.dimensionAncho.toString())),
-              DataCell(Text(especificacion.ram)),
-              DataCell(Text(especificacion.procesador)),
-              DataCell(Text(especificacion.memoria)),
-              DataCell(Text(especificacion.color)),
-              DataCell(ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ModificarScreen(especificacion: especificacion),
-                    ),
-                  );
-                },
-                child: Text('Editar'),
-                style: TextButton.styleFrom(primary: Color.fromARGB(255, 56, 17, 250)),
-              )),
-              DataCell(ElevatedButton(
-                onPressed: () {
-                  var res = EspecificacionesMostrarService().eliminarEspecificaciones(especificacion.id);
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => MyHomePage(),
-                    ),
-                  );
-                },
-                child: Text('Eliminar'),
-                style: TextButton.styleFrom(primary: Colors.black),
-              )),
-            ],
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: DataTable(
+              columns: const <DataColumn>[
+                DataColumn(
+                  label: Text(
+                    'Serie',
+                  ),
+                ),
+                DataColumn(
+                  label: Text(
+                    'Marca',
+                  ),
+                ),
+                DataColumn(
+                  label: Text(
+                    'Estado',
+                  ),
+                ),
+                DataColumn(
+                  label: Text(
+                    'EQ',
+                  ),
+                ),
+                DataColumn(
+                  label: Text(
+                    'Alto',
+                  ),
+                ),
+                DataColumn(
+                  label: Text(
+                    'Ancho',
+                  ),
+                ),
+                DataColumn(
+                  label: Text(
+                    'RAM',
+                  ),
+                ),
+                DataColumn(
+                  label: Text(
+                    'Procesador',
+                  ),
+                ),
+                DataColumn(
+                  label: Text(
+                    'Memoria',
+                  ),
+                ),
+                DataColumn(
+                  label: Text(
+                    'Color',
+                  ),
+                ),
+                DataColumn(
+                  label: Text(
+                    'Editar',
+                  ),
+                ),
+                DataColumn(
+                  label: Text(
+                    'Eliminar',
+                  ),
+                ),
+              ],
+              rows: especificaciones == null
+                  ? <DataRow>[] // Si no hay información, muestra una lista vacía
+                  : // Si hay información, muestra la lista de
+                  especificaciones!
+                      .map(
+                        (especificacion) => DataRow(
+                          cells: <DataCell>[
+                            DataCell(Text(especificacion.serie)),
+                            DataCell(Text(especificacion.marca)),
+                            DataCell(Text(especificacion.estado)),
+                            DataCell(Text(especificacion.eq.toString())),
+                            DataCell(
+                                Text(especificacion.dimensionAlto.toString())),
+                            DataCell(
+                                Text(especificacion.dimensionAncho.toString())),
+                            DataCell(Text(especificacion.ram)),
+                            DataCell(Text(especificacion.procesador)),
+                            DataCell(Text(especificacion.memoria)),
+                            DataCell(Text(especificacion.color)),
+                            DataCell(ElevatedButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => ModificarScreen(
+                                        especificacion: especificacion),
+                                  ),
+                                );
+                              },
+                              child: Text('Editar'),
+                              style: TextButton.styleFrom(
+                                  primary: Color.fromARGB(255, 56, 17, 250)),
+                            )),
+                            DataCell(ElevatedButton(
+                              onPressed: () {
+                                var res = EspecificacionesMostrarService()
+                                    .eliminarEspecificaciones(
+                                        especificacion.id);
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => MyHomePage(),
+                                  ),
+                                );
+                              },
+                              child: Text('Eliminar'),
+                              style:
+                                  TextButton.styleFrom(primary: Colors.black),
+                            )),
+                          ],
+                        ),
+                      )
+                      .toList(),
+            ),
           ),
-        )
-        .toList(),
-  ),
-),
         ],
-      )
-      ),
+      )),
     );
   }
 }
